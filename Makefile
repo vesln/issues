@@ -1,4 +1,4 @@
-TESTS = test/*.test.js
+TESTS = $(shell find test/ -iname \*.test.js)
 
 test:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
