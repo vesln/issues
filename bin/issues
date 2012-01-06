@@ -3,25 +3,8 @@
 /**
  * Dependencies.
  */
-var argv = require('optimist').options({
-  'about': {
-    description: 'Library author.',
-  },
-  'version': {
-    description: 'Outputs version number.',
-  },
-  'url': {
-    description: 'Outputs the url of the library.',
-  },
-  'help': {
-    description: 'Outputs this help info.',
-  },
-  'reporter': {
-    description: 'Reporter - basic, short',
-    default: 'basic'
-  }
-}).argv;
-
+var commands = require('../lib/commands');
+var argv = require('optimist').argv;
 var Dispatcher = require('../lib/dispatcher');
 var dispatcher = new Dispatcher(argv);
 var error = console.error;
