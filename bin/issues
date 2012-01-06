@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+/**
+ * Dependencies.
+ */
+var argv = require('optimist').options({
+  'about': {
+    description: 'Library author.',
+  },
+  'version': {
+    description: 'Outputs version number.',
+  },
+  'url': {
+    description: 'Outputs the url of the library.',
+  },
+  'help': {
+    description: 'Outputs this help info.',
+  },
+  'reporter': {
+    description: 'Reporter - basic, short',
+    default: 'basic'
+  }
+}).argv;
+
+var Dispatcher = require('../lib/dispatcher');
+var dispatcher = new Dispatcher(argv);
+var error = console.error;
+
+/**
+ * Handles exceptions.
+ */
+process.on('uncaughtException', function(err) {
+  error(err.message);
+  process.exit(1);
+})
+
+/**
+ * Dispatches the request.
+ */
+dispatcher.run();

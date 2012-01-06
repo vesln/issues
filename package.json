@@ -1,0 +1,33 @@
+{
+    "name": "issues"
+  , "preferGlobal": "true"
+  , "version": "0.0.1"
+  , "description": "GitHub Issues from the CLI."
+  , "keywords": ["github", "github issues"]
+  , "author": "Veselin Todorov <hi@vesln.com>"
+  , "dependencies": {
+	    "package": "1.0.0"
+	  , "async": "0.1.15"
+	  , "optimist": "0.3.1"
+	  , "request": "2.9.3"
+	  , "redr": "0.0.2"
+	  , "cli-table": "0.0.1"
+	  , "cli-color": "0.1.5"
+  }
+  , "devDependencies": {
+      "mocha": "0.3.3"
+    , "should": "0.3.2"
+  }
+  , "repository" : {
+      "type" : "git"
+    , "url" : "http://github.com/vesln/issues.git"
+  }
+  , "homepage": "http://github.com/vesln/issues"
+  , "scripts": {
+      "test": "make test"
+  }
+  , "main": "index"
+  , "engines": { 
+      "node": ">= 0.6.0 < 0.7.0"
+  }
+}
