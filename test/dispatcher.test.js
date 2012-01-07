@@ -32,7 +32,11 @@ describe('Dispatcher', function() {
     });
     
     it('should call handle if everything is ok', function() {
-      var dispatcher = new Dispatcher({ _: ['vesln', 'logme'] });
+      var print = Basic.prototype.print;
+      Basic.prototype.print = function() {
+        Basic.prototype.print = print;
+      };
+      var dispatcher = new Dispatcher({ _: ['vesln', 'logme'], reporter: 'basic' });
       sinon.stub(dispatcher, 'handle');
       dispatcher.run();
       dispatcher.handle.should.be.ok;
