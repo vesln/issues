@@ -27,6 +27,9 @@
   , "scripts": {
       "test": "make test"
   }
+  , "bin": {
+      "issues": "./bin/issues"
+  }
   , "main": "index"
   , "engines": { 
       "node": ">= 0.6.0 < 0.7.0"
