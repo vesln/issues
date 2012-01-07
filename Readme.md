@@ -28,7 +28,7 @@ Options:
   --reporter  Reporter - basic, short          [default: "basic"]
 ```
 
-All issues for user:
+All issues:
 
 ```
 
@@ -71,6 +71,10 @@ $ npm install
 $ make test
 
 ```
+
+## Disclaimer
+
+This tool is not official. It just uses the GitHub API and that's it.
 	
 ## License
 
