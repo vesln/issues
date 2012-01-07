@@ -3,8 +3,8 @@
 /**
  * Dependencies.
  */
-var commands = require('../lib/commands');
-var argv = require('optimist').argv;
+var params = require('../lib/params');
+var argv = require('optimist').options(params).argv;
 var Dispatcher = require('../lib/dispatcher');
 var dispatcher = new Dispatcher(argv);
 var error = console.error;
