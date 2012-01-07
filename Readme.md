@@ -2,7 +2,7 @@
 
 # GitHub Issues - CLI edition
 
-http://github.com/vesln/issues
+![screenshot](http://img233.imageshack.us/img233/5789/screenshot20120107at114.png)
 
 ## Description
 	
@@ -26,6 +26,22 @@ Options:
   --url       Outputs the url of the library.
   --help      Outputs this help info.        
   --reporter  Reporter - basic, short          [default: "basic"]
+```
+
+All issues for user:
+
+```
+
+$ issues vesln
+
+```
+
+Just one repo:
+
+```
+
+$ issues nodejitsu forever
+
 ```
 
 ## Requirements
