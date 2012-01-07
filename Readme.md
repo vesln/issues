@@ -51,12 +51,26 @@ $ issues nodejitsu forever
 
 ## Install
 
-	$ npm install issues -g
+```
 
+$ npm install issues -g
+
+```
+or use sudo, if necessary:
+
+```
+
+$ sudo npm install issues -g
+
+```
 ## Tests
 
-	$ npm install
-	$ make test
+```
+
+$ npm install
+$ make test
+
+```
 	
 ## License
 
