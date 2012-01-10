@@ -53,6 +53,8 @@ $ issues --set token:token
 
 ```
 
+! Note: Use sudo if necessary.
+
 And then:
 
 ```
