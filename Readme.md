@@ -28,7 +28,7 @@ Options:
   --reporter  Reporter - basic, short          [default: "basic"]
 ```
 
-All issues:
+### All issues:
 
 ```
 
@@ -36,11 +36,28 @@ $ issues vesln
 
 ```
 
-Just one repo:
+### Just one repo:
 
 ```
 
 $ issues nodejitsu forever
+
+```
+
+### Private issues:
+
+```
+
+$ issues --set username:username
+$ issues --set token:token
+
+```
+
+And then:
+
+```
+$ issues username
+$ issues username your-private-repo
 
 ```
 
