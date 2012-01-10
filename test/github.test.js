@@ -35,8 +35,8 @@ describe('github', function() {
   
   describe('url', function() {
     it('should return sane url', function() {
-      github.url('repos', { user: 'vesln' }).should.eql('https://api.github.com/users/vesln/repos');
-      github.url('issues', { user: 'vesln', repo: 'logme' }).should.eql('https://api.github.com/repos/vesln/logme/issues');
+      github.url('repos', { user: 'vesln' }).should.eql('https://github.com/api/v2/json/repos/show/vesln');
+      github.url('issues', { user: 'vesln', repo: 'logme' }).should.eql('https://github.com/api/v2/json/issues/list/vesln/logme/open');
     });
   });
 });

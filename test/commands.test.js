@@ -26,4 +26,12 @@ describe('commands', function() {
   it('should have url command', function() {
     commands.url.should.be.ok
   });
+  
+  it('should have set command', function() {
+    commands.set.should.be.ok
+  });
+  
+  it('should have clear command', function() {
+    commands.clear.should.be.ok
+  });
 });

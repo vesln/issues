@@ -46,7 +46,7 @@ describe('basic', function() {
             milestone: null,
             labels: [],
             number: 1,
-            user: { login: 'test' },
+            user: 'test',
             title: 'Abstraction',
             id: 1007733,
           }
