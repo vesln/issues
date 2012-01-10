@@ -1,7 +1,7 @@
 {
     "name": "issues"
   , "preferGlobal": "true"
-  , "version": "0.0.3"
+  , "version": "0.1.0"
   , "description": "GitHub Issues from the CLI."
   , "keywords": ["github", "github issues"]
   , "author": "Veselin Todorov <hi@vesln.com>"
