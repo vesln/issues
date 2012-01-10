@@ -1,4 +1,19 @@
 
+0.1.0 / 2012-01-10 
+==================
+  
+  * Adding private repos support.
+  * Refactoring the error handling in the github client.
+  * Adding private issues section to readme.
+  * Adding data to gitignore.
+  * Adding config storage.
+  * Refactoring the github client. Adding basic auth.
+  * Adding nconf as dep.
+  * Renaming user.login to user (GitHub api v2).
+  * Adding set and claer to params.
+  * Dispatcher now passes argv to commands.
+  * Adding set & clear commands.
+
 0.0.3 / 2012-01-08 
 ==================
 
