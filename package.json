@@ -13,6 +13,7 @@
 	  , "redr": "0.0.2"
 	  , "cli-table": "0.0.1"
 	  , "cli-color": "0.1.5"
+	  , "nconf": "0.5.x"
   }
   , "devDependencies": {
       "mocha": "0.3.3"
