@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+/**
+ * Dependencies.
+ */
+//var params = require('../lib/params');
+//var argv = require('optimist').options(params).argv;
+
+var fs = require('fs');
+var path = require('path');
+
+var Dispatcher = require('../lib/dispatcher');
+var argv = {_:[], '$0': 'node ./git-issues', reporter: 'basic'};
+var dispatcher = new Dispatcher(argv);
+var error = console.error;
+var file = null;
+
+var location = process.cwd();
+var found = null;
+  
+while (!found) {
+  file = location + '/.git/config';
+  if (path.existsSync( file )) {
+    found = file;
+  } else if (location !== '/') {
+    location = path.dirname(location);
+  } else {
+    throw new Error('.git/config can not be located');
+  }
+}
+var data = fs.readFileSync(file,'utf-8');
+
+
+var r = data.match(/url = git:\/\/github.com\/([^\/]+)\/([^\.]+).git/);
+
+argv._[0] = r[1];
+argv._[1] = r[2];
+
+
+
+/**
+ * Handles exceptions.
+ */
+process.on('uncaughtException', function(err) {
+  error(err.message);
+  process.exit(1);
+})
+
+/**
+ * Dispatches the request.
+ */
+dispatcher.run();
