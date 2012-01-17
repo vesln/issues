@@ -5,6 +5,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var ini = require('ini');
 
 /**
  * Help params.
@@ -56,22 +57,40 @@ var file = null;
 var location = process.cwd();
 
 while (!file) {
-  if (path.existsSync( file )) {
-    file = location + '/.git/config';
-  } else if (location !== '/') {
-    location = path.dirname(location);
-  } else {
-    throw new Error('.git/config can not be located.');
-  }
+  if (path.existsSync(location + '/.git/config')) file = location + '/.git/config';
+  else if (location !== '/') location = path.dirname(location);
+  else throw new Error('.git/config can not be located.');
 }
 
-var r = fs.readFileSync(file,'utf-8').match(/url = git:\/\/github.com\/([^\/]+)\/([^\.]+).git/);
+/**
+ * Git config.
+ * 
+ * @type {String}
+ */
+var config = ini.parse(fs.readFileSync(file, 'utf-8'));
 
-// Username.
-argv._unshift(r[1]);
+/**
+ * The remote source.
+ * 
+ * @type {Object}
+ */
+var source = config['remote "upstream"'] || config['remote "origin"'];
+
+// Checks if anything was found.
+if (!source) throw new Error('Orgin/upstream was not found.');
+
+/**
+ * User + repo.
+ * 
+ * @type {Object}
+ */
+var result = source.url.match(/(:|\/)([^\/]+)\/([^\/]+)\.git/);
 
 // Repo.
-argv._unshift(r[2]);
+argv._.unshift(result[3]);
+
+// Username.
+argv._.unshift(result[2]);
 
 // Handles exceptions.
 process.on('uncaughtException', function(err) {
