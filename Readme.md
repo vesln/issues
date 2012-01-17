@@ -63,6 +63,13 @@ $ issues username your-private-repo
 
 ```
 
+### From any git repo with origin or upstream: (since 0.2.0)
+
+```
+$ cd your-repo
+$ git issues
+```
+
 ## Requirements
 
 - NPM (http://npmjs.org/)

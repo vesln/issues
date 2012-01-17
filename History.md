@@ -1,4 +1,10 @@
 
+0.2.0 / 2012-01-17 
+==================
+
+  * Adding ini as dep.
+  * Adding "git issues" command when in git repo with origin or upstream.
+
 0.1.0 / 2012-01-10 
 ==================
   
