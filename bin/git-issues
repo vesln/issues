@@ -1,52 +1,83 @@
 #!/usr/bin/env node
 
 /**
- * Dependencies.
+ * Module dependencies.
  */
-//var params = require('../lib/params');
-//var argv = require('optimist').options(params).argv;
-
 var fs = require('fs');
 var path = require('path');
 
+/**
+ * Help params.
+ * 
+ * @type {Object}
+ */
+var params = require('../lib/params');
+
+/**
+ * Argv.
+ * 
+ * @type {Object}
+ */
+var argv = require('optimist').options(params).argv;
+
+/**
+ * The request dispatcher.
+ * 
+ * @type {Function}
+ */
 var Dispatcher = require('../lib/dispatcher');
-var argv = {_:[], '$0': 'node ./git-issues', reporter: 'basic'};
-var dispatcher = new Dispatcher(argv);
+
+/**
+ * Dispatcher instance.
+ * 
+ * @type {Object}
+ */
+var dispatcher = null;
+
+/**
+ * Error alias.
+ * 
+ * @type {Function}
+ */
 var error = console.error;
+
+/**
+ * The git config file path.
+ * 
+ * @type {String}
+ */
 var file = null;
 
+/**
+ * Current location.
+ * 
+ * @type {String}
+ */
 var location = process.cwd();
-var found = null;
-  
-while (!found) {
-  file = location + '/.git/config';
+
+while (!file) {
   if (path.existsSync( file )) {
-    found = file;
+    file = location + '/.git/config';
   } else if (location !== '/') {
     location = path.dirname(location);
   } else {
-    throw new Error('.git/config can not be located');
+    throw new Error('.git/config can not be located.');
   }
 }
-var data = fs.readFileSync(file,'utf-8');
 
+var r = fs.readFileSync(file,'utf-8').match(/url = git:\/\/github.com\/([^\/]+)\/([^\.]+).git/);
 
-var r = data.match(/url = git:\/\/github.com\/([^\/]+)\/([^\.]+).git/);
+// Username.
+argv._unshift(r[1]);
 
-argv._[0] = r[1];
-argv._[1] = r[2];
+// Repo.
+argv._unshift(r[2]);
 
-
-
-/**
- * Handles exceptions.
- */
+// Handles exceptions.
 process.on('uncaughtException', function(err) {
   error(err.message);
   process.exit(1);
-})
+});
 
-/**
- * Dispatches the request.
- */
-dispatcher.run();
+// Dispatches the request.
+dispatcher = new Dispatcher(argv).run();
