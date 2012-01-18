@@ -1,23 +1,6 @@
 #!/usr/bin/env node
 
 /**
- * Dependencies.
+ * Dispatches the argv to the application.
  */
-var params = require('../lib/params');
-var argv = require('optimist').options(params).argv;
-var Dispatcher = require('../lib/dispatcher');
-var dispatcher = new Dispatcher(argv);
-var error = console.error;
-
-/**
- * Handles exceptions.
- */
-process.on('uncaughtException', function(err) {
-  error(err.message);
-  process.exit(1);
-})
-
-/**
- * Dispatches the request.
- */
-dispatcher.run();
+require('../lib/cli').start();
