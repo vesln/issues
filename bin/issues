@@ -3,11 +3,22 @@
 /**
  * Dependencies.
  */
-var params = require('../lib/params');
-var argv = require('optimist').options(params).argv;
-var Dispatcher = require('../lib/dispatcher');
-var dispatcher = new Dispatcher(argv);
+var path = require('path');
+var flatiron = require('flatiron');
+var app = flatiron.app;
 var error = console.error;
+
+app.config.file({ file: path.join(__dirname, '..', 'data', 'config.json') });
+app.use(flatiron.plugins.cli, {
+  usage: [
+    'GitHub Issues from the CLI.',
+    '',
+    'Usage: issues <username> [repository]'
+  ],
+  argv: require('../lib/params')
+});
+
+require('../lib/commands');
 
 /**
  * Handles exceptions.
@@ -18,6 +29,6 @@ process.on('uncaughtException', function(err) {
 })
 
 /**
- * Dispatches the request.
+ * Dispatches the argv to the application.
  */
-dispatcher.run();
+app.start();

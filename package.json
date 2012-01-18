@@ -6,15 +6,11 @@
   , "keywords": ["github", "github issues"]
   , "author": "Veselin Todorov <hi@vesln.com>"
   , "dependencies": {
-	    "package": "1.0.0"
-	  , "async": "0.1.15"
-	  , "optimist": "0.3.1"
+      "flatiron": "~0.1.7"
+	  , "package": "1.0.0"
 	  , "request": "2.9.3"
-	  , "redr": "0.0.2"
 	  , "cli-table": "0.0.1"
 	  , "cli-color": "0.1.5"
-	  , "nconf": "0.5.x"
-	  , "ini": "1.0.2"
   }
   , "devDependencies": {
       "mocha": "0.3.3"
