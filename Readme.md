@@ -21,12 +21,22 @@ GitHub Issues from the CLI.
 Usage: issues <username> [repository]
 
 Options:
-  --about     Library author.                
-  --version   Outputs version number.        
-  --url       Outputs the url of the library.
-  --help      Outputs this help info.        
-  --reporter  Reporter - basic, short          [default: "basic"]
+  --reporter basic, eighty, number, short
+
 ```
+
+### Configurations
+
+```
+$ issues set <key> <value>
+$ issues clear <key>
+```
+
+Options:
+
+username - GitHub username
+token    - GitHub token
+reporter - Default reporter
 
 ### All issues:
 
@@ -82,13 +92,7 @@ $ git issues
 $ npm install issues -g
 
 ```
-or use sudo, if necessary:
 
-```
-
-$ sudo npm install issues -g
-
-```
 ## Tests
 
 ```
