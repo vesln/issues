@@ -11,20 +11,12 @@
 var commands = require('../lib/commands');
 
 describe('commands', function() {
-  it('should have help command', function() {
-    commands.help.should.be.ok
-  });
-  
-  it('should have about command', function() {
-    commands.about.should.be.ok
-  });
-  
   it('should have version command', function() {
     commands.version.should.be.ok
   });
   
-  it('should have url command', function() {
-    commands.url.should.be.ok
+  it('should have issues command', function() {
+    commands.issues.should.be.ok
   });
   
   it('should have set command', function() {
