@@ -7,7 +7,6 @@
   , "author": "Veselin Todorov <hi@vesln.com>"
   , "dependencies": {
       "flatiron": "~0.1.7"
-	  , "package": "1.0.0"
 	  , "request": "2.9.3"
 	  , "cli-table": "0.0.1"
 	  , "cli-color": "0.1.5"
