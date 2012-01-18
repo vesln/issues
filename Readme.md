@@ -48,8 +48,8 @@ $ issues nodejitsu forever
 
 ```
 
-$ issues --set username:username
-$ issues --set token:token
+$ issues set username username
+$ issues set token token
 
 ```
 
@@ -93,8 +93,7 @@ $ sudo npm install issues -g
 
 ```
 
-$ npm install
-$ make test
+$ npm test
 
 ```
 

@@ -1,39 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * Dependencies.
  */
-var fs = require('fs');
 var path = require('path');
-var ini = require('ini');
-
-/**
- * Help params.
- * 
- * @type {Object}
- */
-var params = require('../lib/params');
-
-/**
- * Argv.
- * 
- * @type {Object}
- */
-var argv = require('optimist').options(params).argv;
-
-/**
- * The request dispatcher.
- * 
- * @type {Function}
- */
-var Dispatcher = require('../lib/dispatcher');
-
-/**
- * Dispatcher instance.
- * 
- * @type {Object}
- */
-var dispatcher = null;
+var flatiron = require('flatiron');
+var app = require('../lib/cli');
 
 /**
  * Error alias.
@@ -67,14 +39,18 @@ while (!file) {
  * 
  * @type {String}
  */
-var config = ini.parse(fs.readFileSync(file, 'utf-8'));
+app.config.use('ini', {
+  type: 'file',
+  file: file,
+  format: flatiron.formats.ini
+});
 
 /**
  * The remote source.
  * 
  * @type {Object}
  */
-var source = config['remote "upstream"'] || config['remote "origin"'];
+var source = app.config.get('remote "upstream"') || app.config.get('remote "origin"');
 
 // Checks if anything was found.
 if (!source) throw new Error('Orgin/upstream was not found.');
@@ -87,16 +63,12 @@ if (!source) throw new Error('Orgin/upstream was not found.');
 var result = source.url.match(/(:|\/)([^\/]+)\/([^\/]+)\.git/);
 
 // Repo.
-argv._.unshift(result[3]);
+app.argv._.unshift(result[3]);
 
 // Username.
-argv._.unshift(result[2]);
+app.argv._.unshift(result[2]);
 
-// Handles exceptions.
-process.on('uncaughtException', function(err) {
-  error(err.message);
-  process.exit(1);
-});
-
-// Dispatches the request.
-dispatcher = new Dispatcher(argv).run();
+/**
+ * Dispatches the argv to the application.
+ */
+app.start();

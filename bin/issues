@@ -1,34 +1,6 @@
 #!/usr/bin/env node
 
 /**
- * Dependencies.
- */
-var path = require('path');
-var flatiron = require('flatiron');
-var app = flatiron.app;
-var error = console.error;
-
-app.config.file({ file: path.join(__dirname, '..', 'data', 'config.json') });
-app.use(flatiron.plugins.cli, {
-  usage: [
-    'GitHub Issues from the CLI.',
-    '',
-    'Usage: issues <username> [repository]'
-  ],
-  argv: require('../lib/params')
-});
-
-require('../lib/commands');
-
-/**
- * Handles exceptions.
- */
-process.on('uncaughtException', function(err) {
-  error(err.message);
-  process.exit(1);
-})
-
-/**
  * Dispatches the argv to the application.
  */
-app.start();
+require('../lib/cli').start();

@@ -23,13 +23,13 @@
   }
   , "homepage": "http://github.com/vesln/issues"
   , "scripts": {
-      "test": "make test"
+      "test": "NODE_ENV=test mocha --require should --timeout 5000 --slow 4000 --reporter spec test/*.test.js test/reporters/*.test.js"
   }
   , "bin": {
       "issues": "./bin/issues"
     , "git-issues": "./bin/git-issues"
   }
-  , "main": "index"
+  , "main": "./lib/index"
   , "engines": { 
       "node": ">= 0.6.0 < 0.7.0"
   }

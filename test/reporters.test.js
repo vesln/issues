@@ -8,17 +8,34 @@
 /**
  * Dependencies.
  */
-var reporters = require('../lib/reporters');
-var Redr = require('redr');
+var fs = require('fs');
 var path = require('path');
+var sinon = require('sinon');
+var reporters = require('../lib/reporters');
+var Basic = require('../lib/reporters/basic');
 
 describe('reporters', function() {
-  it('should be instanceof redr', function() {
-    (reporters instanceof Redr).should.be.ok;
+  it('should have the correct modules', function() {
+    fs.readdirSync(path.join(__dirname, '..', 'lib', 'reporters')).forEach(function (file) {
+      file = file.replace('.js', '');
+      reporters.should.have.property(file);
+    });
   });
   
-  it('should have correct path', function() {
-    var expected = path.dirname(__dirname) + '/lib/reporters/';
-    reporters.paths[0].should.eql(expected);
-  });
+  describe('handle', function() {
+    it('should throw error if invalid reporter is supplied', function(done) {
+      try {
+        reporters.handle('foo', {});
+      } catch(err) {
+        done();
+      }
+    });
+    
+    it('should call print method of reporter if everything is ok', function() {
+      var print = sinon.stub(Basic.prototype, 'print');
+      reporters.handle('basic', {});
+      print.calledOnce.should.be.ok;
+      print.restore();
+    });
+  });  
 });
