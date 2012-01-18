@@ -1,4 +1,13 @@
 
+0.3.0 / 2012-01-18 
+==================
+
+  * Better error handling.
+  * Removing package dep.
+  * Removing useless commands.
+  * The configured reporter can now be overridden with --reporter param.
+  * Finish refactor of issues to use flatiron.
+
 0.2.0 / 2012-01-17 
 ==================
 
