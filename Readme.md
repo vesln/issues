@@ -35,7 +35,9 @@ $ issues clear <key>
 Options:
 
 username - GitHub username
+
 token    - GitHub token
+
 reporter - Default reporter
 
 ### All issues:
