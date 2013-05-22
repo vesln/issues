@@ -12,7 +12,8 @@
     "flatiron": "~0.3.4",
     "request": "~2.14.0",
     "cli-color": "~0.2.2",
-    "cli-table": "~0.2.0"
+    "cli-table": "~0.2.0",
+    "moment": "~2.0.0"
   },
   "devDependencies": {
     "mocha": "1.8.1",
