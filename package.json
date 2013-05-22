@@ -1,7 +1,7 @@
 {
   "name": "issues",
   "preferGlobal": "true",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "GitHub Issues from the CLI.",
   "keywords": [
     "github",

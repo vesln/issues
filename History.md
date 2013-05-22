@@ -1,4 +1,9 @@
 
+0.3.2 / 2013-05-22
+==================
+  * Basic (and eighty) reporters now displays issue numbers.
+  * Dates now display in humanized "X time ago" form.
+
 0.3.1 / 2013-05-22
 ==================
 
