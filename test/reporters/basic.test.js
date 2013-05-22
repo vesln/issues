@@ -15,8 +15,8 @@ describe('basic', function() {
   it('should have options', function() {
     var basic = new Basic;
     basic.options.should.eql({
-      head: ['Title', 'Author', 'Date'],
-      colWidths: [40, 20, 25]
+      head: ['#', 'Title', 'Author', 'Date'],
+      colWidths: [6, 46, 16, 16]
     });
   });
   
@@ -46,14 +46,21 @@ describe('basic', function() {
             milestone: null,
             labels: [],
             number: 1,
-            user: 'test',
+            user: { login: 'test' },
             title: 'Abstraction',
             id: 1007733,
           }
         ] };
         reporter.print();
         reporter.out.calledOnce.should.be.ok;
-        reporter.out.getCall(0).args[0].should.eql('\n \u001b[4m\u001b[1mluna\u001b[22m\u001b[24m (1 open issues)\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃\u001b[36m Title                                  \u001b[39m┃\u001b[36m Author             \u001b[39m┃\u001b[36m Date                    \u001b[39m┃\n┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━┫\n┃ Abstraction                            ┃ test               ┃ 2011-06-06T06:04:20Z    ┃\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━┛\n');
+        // TODO: figure out a better test
+        var out = reporter.out.getCall(0).args[0];
+        out.should.include('1');
+        out.should.include('luna');
+        out.should.include('test');
+        out.should.include('Abstraction');
+        out.should.include('years ago');
+        //reporter.out.getCall(0).args[0].should.eql('\n \u001b[4m\u001b[1mluna\u001b[22m\u001b[24m (1 open issues)\n\n┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃\u001b[36m Title                                  \u001b[39m┃\u001b[36m Author             \u001b[39m┃\u001b[36m Date                    \u001b[39m┃\n┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━┫\n┃ Abstraction                            ┃ test               ┃ 2011-06-06T06:04:20Z    ┃\n┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━┛\n');
       });
     });
   });

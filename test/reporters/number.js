@@ -39,7 +39,7 @@ describe('number', function() {
             milestone: null,
             labels: [],
             number: 1,
-            user: 'test',
+            user: { login: 'test' },
             title: 'Abstraction',
             id: 1007733,
           }

@@ -14,8 +14,8 @@ describe('Eighty', function() {
   it('should have options', function() {
     var eighty = new Eighty;
     eighty.options.should.eql({
-      head: ['Title', 'Author', 'Date'],
-      colWidths: [35, 15, 25]
+      head: ['#', 'Title', 'Author', 'Date'],
+      colWidths: [6, 38, 14, 16]
     });
   });
 });
