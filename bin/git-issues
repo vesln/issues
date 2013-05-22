@@ -3,6 +3,7 @@
 /**
  * Dependencies.
  */
+var fs = require('fs');
 var path = require('path');
 var flatiron = require('flatiron');
 var app = require('../lib/cli');
@@ -29,7 +30,7 @@ var file = null;
 var location = process.cwd();
 
 while (!file) {
-  if (path.existsSync(location + '/.git/config')) file = location + '/.git/config';
+  if (fs.existsSync(location + '/.git/config')) file = location + '/.git/config';
   else if (location !== '/') location = path.dirname(location);
   else throw new Error('.git/config can not be located.');
 }
