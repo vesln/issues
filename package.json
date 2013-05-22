@@ -1,35 +1,38 @@
 {
-    "name": "issues"
-  , "preferGlobal": "true"
-  , "version": "0.3.0"
-  , "description": "GitHub Issues from the CLI."
-  , "keywords": ["github", "github issues"]
-  , "author": "Veselin Todorov <hi@vesln.com>"
-  , "dependencies": {
-      "flatiron": "~0.1.7"
-	  , "request": "2.9.3"
-	  , "cli-table": "0.0.1"
-	  , "cli-color": "0.1.5"
-  }
-  , "devDependencies": {
-      "mocha": "0.3.3"
-    , "should": "0.3.2"
-    , "sinon": "1.3.1"
-  }
-  , "repository" : {
-      "type" : "git"
-    , "url" : "http://github.com/vesln/issues.git"
-  }
-  , "homepage": "http://github.com/vesln/issues"
-  , "scripts": {
-      "test": "NODE_ENV=test mocha --require should --timeout 5000 --slow 4000 --reporter spec test/*.test.js test/reporters/*.test.js"
-  }
-  , "bin": {
-      "issues": "./bin/issues"
-    , "git-issues": "./bin/git-issues"
-  }
-  , "main": "./lib/index"
-  , "engines": { 
-      "node": ">= 0.6.0 < 0.7.0"
+  "name": "issues",
+  "preferGlobal": "true",
+  "version": "0.3.0",
+  "description": "GitHub Issues from the CLI.",
+  "keywords": [
+    "github",
+    "github issues"
+  ],
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "dependencies": {
+    "flatiron": "~0.3.4",
+    "request": "~2.14.0",
+    "cli-color": "~0.2.2",
+    "cli-table": "~0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "1.8.1",
+    "should": "1.2.2",
+    "sinon": "1.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/vesln/issues.git"
+  },
+  "homepage": "http://github.com/vesln/issues",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --require should --timeout 5000 --slow 4000 --reporter spec test/*.test.js test/reporters/*.test.js"
+  },
+  "bin": {
+    "issues": "./bin/issues",
+    "git-issues": "./bin/git-issues"
+  },
+  "main": "./lib/index",
+  "engines": {
+    "node": ">= 0.8.0 < 0.9.0"
   }
 }
